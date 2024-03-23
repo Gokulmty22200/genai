@@ -1,0 +1,21 @@
+<div class="chat-window" *ngIf="showChat">
+    <div class="chat-header">
+      <span class="close" (click)="toggleChat()">×</span>
+      <h3>Support Bot</h3>
+    </div>
+    <div class="chat-body">
+        <div class="message-reply">
+            <div class="reply-message-text">Hi there! How can we assist you today?</div>
+            <div class="reply-message-time">9:00 AM</div>
+          </div>
+          <div class="message">
+            <div class="message-text">I'm having trouble streaming a movie.</div>
+            <div class="message-time">9:05 AM</div>
+          </div>
+          
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="Type your message...">
+      <button id="send-btn" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
