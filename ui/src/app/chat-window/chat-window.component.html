@@ -4,18 +4,17 @@
       <h3>Support Bot</h3>
     </div>
     <div class="chat-body">
-        <div class="message-reply">
-            <div class="reply-message-text">Hi there! How can we assist you today?</div>
-            <div class="reply-message-time">9:00 AM</div>
+      <span *ngFor="let message of messages">
+        <div [ngClass]="message.isInput ? 'message' : 'message-reply'" >
+            <div [ngClass]="message.isInput ? 'message-text' : 'reply-message-text'">{{message.message}}</div>
+            <div [ngClass]="message.isInput ? 'message-time' : 'reply-message-time'">{{message.time}}</div>
           </div>
-          <div class="message">
-            <div class="message-text">I'm having trouble streaming a movie.</div>
-            <div class="message-time">9:05 AM</div>
-          </div>
-          
+        </span>
     </div>
+      <form [formGroup]="chatForm">
     <div class="chat-footer">
-      <input type="text" id="chat-input" placeholder="Type your message...">
+      <input type="text" formControlName="message" id="chat-input" placeholder="Type your message..." autocomplete="off">
       <button id="send-btn" (click)="sendMessage()">Send</button>
     </div>
+    </form>
   </div>
