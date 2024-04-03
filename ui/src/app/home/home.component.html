@@ -5,9 +5,12 @@
     <div>
         <h1 class="company-name">OTT Inc.</h1>
     </div>
-    <div>
-        <a href="#" class="login">Login</a>
-    </div>
+    <ng-container *ngIf="!loggedIn; else loggedInTemplate">
+      <a class="login" (click)="toggleLoginWindow()">Login</a>
+  </ng-container>
+  <ng-template #loggedInTemplate>
+      <span  class="login" (click)="logout()">Welcome, {{ userName }}</span>
+  </ng-template>
   </header>
 
   <section class="hero">
@@ -49,4 +52,5 @@
   <div class="chat-icon" (click)="toggleChatWindow()">
     <img src="assets/img/chatbot.png" alt="Chat">
   </div>
+  <app-login *ngIf="showLoginWindow" (close)="toggleLoginWindow()" (loggedInUserData)="handleLogin($event)"></app-login>
 <app-chat-window *ngIf="showChatWindow"></app-chat-window>

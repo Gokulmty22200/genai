@@ -2,7 +2,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedService } from '../shared/shared.service'
+import { SharedService } from '../shared/shared.service';
 import { Message } from '../shared/message';
 
 @Component({

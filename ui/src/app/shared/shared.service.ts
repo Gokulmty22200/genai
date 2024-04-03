@@ -11,15 +11,26 @@ export class SharedService {
     private httpService: HttpClient
   ) { }
 
+  getHeaders(): HttpHeaders {
+    const currentUserData = localStorage.getItem('currentUser');
+    const currentUser = currentUserData ? JSON.parse(currentUserData) : null;
+    const token = currentUser ? currentUser.token : null;
+    const headers = new HttpHeaders();
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    return headers;
+  }
+
+
   sendUserMessage(message: string){
-    return this.httpService.post(this.apiURL, {message});
+    const headers = this.getHeaders();
+    return this.httpService.post(this.apiURL, {message}, {headers});
+  }
 
-    // For Using API Call with headers use below.
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': 'token......'
-    // });
-
-    // return this.httpService.post(this.apiURL, {message}, {headers});
+  loginUser(userName: string, password: string){
+    const loginCred = {userName,password};
+    const headers = this.getHeaders();
+    return this.httpService.post(this.apiURL,loginCred, {headers});
   }
 }

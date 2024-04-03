@@ -1,0 +1,18 @@
+<div class="floating-login" *ngIf="showLoginWindow">
+    <button class="close-btn" (click)="toggleLoginWindow()">&times;</button>
+    <div class="login-form">
+        <form [formGroup]="loginForm">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="email"><h4>Email</h4></label>
+                <input type="email" class="form-control" formControlName="email" id="email" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password"><h4>Password</h4></label>
+                <input type="password" class="form-control" formControlName="password" id="password" autocomplete="off">
+            </div>
+            <div *ngIf="loginError" class="error-message">Please Check User Name and Password</div>
+            <button type="submit" (click)="loginUser()">Login</button>
+        </form>
+    </div>
+</div>
